@@ -38,10 +38,17 @@ const server = http.createServer(async (req, res) => {
     const weight = queryObject['weight'] ;
     const reps = queryObject['reps'] ;
 
-    await createPage(workoutIdMap[workout], weight, reps);
+    try{
 
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.write("Created!");
+        await createPage(workoutIdMap[workout], weight, reps);
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write("Created!");
+    }catch(ex){
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write("Error in creating!");
+    }
     // res.write('["first", "second", "Barbell squats", "Lying dumbell"]');
     // res.write('{"list": ["first", "second", "Barbell squats", "Lying dumbell"] }');
     //end the response
