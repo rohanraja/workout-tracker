@@ -1,0 +1,14 @@
+{
+  "name": "iwatch-auto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rr",
+  "license": "ISC",
+  "dependencies": {
+    "@notionhq/client": "^0.4.13"
+  }
+}
