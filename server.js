@@ -13,8 +13,8 @@ const server = http.createServer(async (req, res) => {
         console.log("Request recieved!");
         res.writeHead(200, { "Content-Type": "application/json" });
         //set the response
-        // res.write('["first", "second", "Barbell squats", "Lying dumbell"]');
-        res.write('{"list": ["first", "second", "Barbell squats", "Lying dumbell"] }');
+        res.write('["first", "second", "Barbell squats", "Lying dumbell"]');
+        // res.write('{"list": ["first", "second", "Barbell squats", "Lying dumbell"] }');
         //end the response
         res.end();
     }
