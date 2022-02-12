@@ -35,8 +35,10 @@ const server = http.createServer(async (req, res) => {
     console.log("Create Request recieved!");
     //set the response
     const workout = queryObject['w'] ;
+    const weight = queryObject['weight'] ;
+    const reps = queryObject['reps'] ;
 
-    await createPage(workoutIdMap[workout]);
+    await createPage(workoutIdMap[workout], weight, reps);
 
     res.writeHead(200, { "Content-Type": "application/json" });
     res.write("Created!");
@@ -52,7 +54,7 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-const createPage = async (wid, weight) => {
+const createPage = async (wid, weight, rep) => {
   const notion = new Client({ auth: process.env.NOTION_API_KEY });
   const response = await notion.pages.create({
     parent: {
@@ -80,7 +82,10 @@ const createPage = async (wid, weight) => {
         ],
       },
       "Weight(kg)": {
-        number: 2.5,
+        number: parseInt(weight),
+      },
+      "Reps": {
+        number: parseInt(rep),
       },
     },
   });
